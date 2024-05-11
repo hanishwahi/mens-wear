@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Header from '../Components/Header'
 import { Col, Container, Row } from 'react-bootstrap'
-import Footer from '../Footer/Footer'
+import Footer from '../Components/Footer'
 import ProductComp from './ProductComp'
 
 function CategoryClothes() {

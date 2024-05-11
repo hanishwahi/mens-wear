@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Header from '../Components/Header'
+import Footer from '../Components/Footer'
 import { useDispatch } from 'react-redux'
 import { addToCart } from '../../Store/Slices/ProductSlice'
 import ProductDescription from './ProductDescription'
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import Footer from '../Footer/Footer'
 function ProductPage() {
     const [data, setData] = useState([])
     const [pincode, setPincode] = useState([])
@@ -25,6 +25,7 @@ function ProductPage() {
         fetchProducts()
     }, [])
     let selectedProduct = data.find((item) => item._id === prductID)
+    console.log(selectedProduct);
     const description = selectedProduct && selectedProduct.description;
     const plusCart = () => {
         setQuantity(quantity + 1)
@@ -96,6 +97,7 @@ function ProductPage() {
                                                     <del>MRP: {quantity * selectedProduct.price}/- </del>
                                                 </div>
                                                 <p className="card-text">₹ {Math.ceil((selectedProduct.price - selectedProduct.price / 100 * selectedProduct.discountPercentage)) * quantity}/-</p>
+                                                <p className="text-success fw-bold mb-0">( {selectedProduct.discountPercentage}% Off )</p>
                                             </div>
                                             <div> <p className='text-success mb-0'>you saved  ₹{Math.trunc(selectedProduct.price / 100 * selectedProduct.discountPercentage) * quantity} </p></div>
                                             <h2>Brand: {selectedProduct.brand}</h2>

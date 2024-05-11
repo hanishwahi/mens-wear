@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Header from '../Components/Header'
-import Footer from '../Footer/Footer'
+import Footer from '../Components/Footer'
 import Form from 'react-bootstrap/Form';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';

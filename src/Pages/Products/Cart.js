@@ -3,7 +3,7 @@ import Header from '../Components/Header';
 import { useDispatch, useSelector } from 'react-redux';
 import { Col, Container, Row } from 'react-bootstrap';
 import { removeAllItems, removeFromCart } from '../../Store/Slices/ProductSlice';
-import Footer from './../Footer/Footer'
+import Footer from './../Components/Footer'
 import { Link } from 'react-router-dom';
 
 function Cart() {

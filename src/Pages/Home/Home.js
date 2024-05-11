@@ -3,7 +3,7 @@ import Slider from './Slider'
 import Header from '../Components/Header'
 import LatestProduct from './LatestProduct'
 import BestSelling from './BestSelling'
-import Footer from '../Footer/Footer'
+import Footer from '../Components/Footer'
 import TopBrand from './TopBrand'
 import Banner from './Banner'
 
