@@ -36,8 +36,7 @@ function AllProducts() {
     }
     return (
         <>
-            <Container>
-                <div>AllProducts</div>
+            <Container fluid="xl">
                 <Table striped>
                     <thead>
                         <tr>
