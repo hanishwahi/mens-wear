@@ -147,6 +147,7 @@ input[type="number"]::-webkit-outer-spin-button {
   font-size: 26px;
   margin-bottom: 20px;
   text-transform: uppercase;
+  text-align: center;
 }
 
 .latest-product-img img {

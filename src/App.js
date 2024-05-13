@@ -1,24 +1,20 @@
 import './Style/Style.css';
 import './Style/Responsive.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import ProductPage from './Pages/Products/ProductPage';
+import ProductPage from './Pages/ProductPage/ProductPage';
 import Home from './Pages/Home/Home';
 import Signup from './Pages/Auth/Signup';
 import Login from './Pages/Auth/Login';
-// import Dashboard from './Pages/Dashboard/Dashboard';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Cart from './Pages/Products/Cart';
+import Cart from './Pages/Cart/Cart';
 import CategoryClothes from './Pages/Home/CategoryClothes';
 import DashBoardTab from './Pages/Dashboard/DashBoardTab';
-import Profile from './Pages/Others/Profile';
+import Profile from './Pages/UserProfile/Profile';
 import ProtectedRoute from './Pages/Auth/ProtectedRoute';
 
 function App() {
   return (
-    <>
-
-
-
+    <> 
       <BrowserRouter>
         <Routes>
           <Route path='/dashboard' element={<DashBoardTab />} />
