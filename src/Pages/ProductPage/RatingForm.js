@@ -18,7 +18,7 @@ function RatingForm({ prductID }) {
     const handleSubmitReview = async () => {
         console.log(review, rating);
         if (user) {
-            let response = await fetch("http://localhost:5000/api/addReview", {
+            let response = await fetch("http://localhost:5000/api/review/addReview", {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -44,7 +44,7 @@ function RatingForm({ prductID }) {
     // fetch review
     async function fetchReview() {
         let response = await fetch(
-            `http://localhost:5000/api/fetchReview/${prductID}`
+            `http://localhost:5000/api/review/fetchReview/${prductID}`
         );
         response = await response.json(); 
         const filteredReview = response.fetchedReview.filter(
@@ -64,7 +64,7 @@ function RatingForm({ prductID }) {
     };
     const handleUpdateReview = async id => {
         try {
-            let response = await fetch("http://localhost:5000/api/updateReview", {
+            let response = await fetch("http://localhost:5000/api/review/updateReview", {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",

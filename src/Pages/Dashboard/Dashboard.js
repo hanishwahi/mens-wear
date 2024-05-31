@@ -21,6 +21,7 @@ const Dashboard = () => {
         let lowerCaseValue = value.toLowerCase()
         setFormData({ ...formData, [name]: lowerCaseValue });
     };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         const { title, price, variant, description, category, discountPercentage, rating, brand, images } = formData
@@ -29,7 +30,7 @@ const Dashboard = () => {
         }
         else {
             try {
-                const response = await fetch('http://localhost:5000/api/addProduct', {
+                const response = await fetch('http://localhost:5000/api/product/addProduct', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

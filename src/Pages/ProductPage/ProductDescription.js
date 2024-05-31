@@ -10,7 +10,7 @@ function ProductDescription({ description, prductID }) {
     // fetch review
     async function fetchReview() {
         let response = await fetch(
-            `http://localhost:5000/api/fetchReview/${prductID}`
+            `http://localhost:5000/api/review/fetchReview/${prductID}`
         );
         response = await response.json();
         setAllFetchedReview(response.fetchedReview);

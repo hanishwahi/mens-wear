@@ -15,9 +15,10 @@ function ProductPage() {
     const [productSize, setProductSize] = useState("sm");
     const params = useParams();
     const prductID = params.id;
+    
     useEffect(() => {
         async function fetchProducts() {
-            let response = await fetch("http://localhost:5000/api/products");
+            let response = await fetch("http://localhost:5000/api/product/allProducts");
             response = await response.json();
             if (response.success) {
                 setData(response.productlist);
@@ -25,7 +26,7 @@ function ProductPage() {
         }
         fetchProducts();
     }, []);
-    let selectedProduct = data.find(item => item._id === prductID); 
+    let selectedProduct = data.find(item => item._id === prductID);
     const description = selectedProduct && selectedProduct.description;
     const plusCart = () => {
         setQuantity(quantity + 1);

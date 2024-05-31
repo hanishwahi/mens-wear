@@ -13,7 +13,7 @@ function CategoryClothes() {
     useEffect(() => {
         async function fetchProduct() {
             try {
-                let response = await fetch(`http://localhost:5000/api/categoryProduct/${category}`);
+                let response = await fetch(`http://localhost:5000/api/product/categoryProduct/${category}`);
                 response = await response.json();
                 setCategorizedProduct(response.categorized)
 

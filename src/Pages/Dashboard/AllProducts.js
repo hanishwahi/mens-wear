@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react'
 import { Container } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
 
-
 function AllProducts() {
     const [data, setData] = useState([])
+
     async function fetchData() {
-        await fetch('http://localhost:5000/api/products').then((resp) => {
+        await fetch('http://localhost:5000/api/product/allProducts').then((resp) => {
             resp.json().then((result) => {
-                setData(result.productlist)
+                setData(result.productlist) 
             })
         })
     }
@@ -18,7 +18,7 @@ function AllProducts() {
 
     const handleDelete = async (id) => {
         try {
-            let response = await fetch(`http://localhost:5000/api/deleteProduct/${id}`, {
+            let response = await fetch(`http://localhost:5000/api/product/deleteProduct/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-type': 'application/json'
