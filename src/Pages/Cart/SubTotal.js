@@ -1,5 +1,6 @@
 import React from 'react'
 import { Col, Row } from 'react-bootstrap'
+import Button from '../Components/Button/Index'
 
 function SubTotal({finalPrice, totalPrice,DeliveryCharges}) {
     return (
@@ -18,8 +19,8 @@ function SubTotal({finalPrice, totalPrice,DeliveryCharges}) {
                     <Col><p>Total Price:</p></Col>
                     <Col className='text-end'><strong>Rs. {(finalPrice ? finalPrice : totalPrice) + DeliveryCharges}/-</strong></Col>
                 </Row>
-                <Row >
-                    <button className='checkout'>Checkout</button>
+                <Row > 
+                    <Button className='checkout' title='Checkout'/>
                 </Row>
 
             </div>

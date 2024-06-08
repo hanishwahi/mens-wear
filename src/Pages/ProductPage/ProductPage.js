@@ -7,6 +7,7 @@ import { addToCart } from "../../Store/Slices/ProductSlice";
 import ProductDescription from "./ProductDescription";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Button from "../Components/Button/Index";
 
 function ProductPage() {
     const [data, setData] = useState([]);
@@ -15,10 +16,12 @@ function ProductPage() {
     const [productSize, setProductSize] = useState("sm");
     const params = useParams();
     const prductID = params.id;
-    
+
     useEffect(() => {
         async function fetchProducts() {
-            let response = await fetch("http://localhost:5000/api/product/allProducts");
+            let response = await fetch(
+                "http://localhost:5000/api/product/allProducts"
+            );
             response = await response.json();
             if (response.success) {
                 setData(response.productlist);
@@ -26,8 +29,9 @@ function ProductPage() {
         }
         fetchProducts();
     }, []);
-    let selectedProduct = data.find(item => item._id === prductID);
+    let selectedProduct = data.find((item) => item._id === prductID);
     const description = selectedProduct && selectedProduct.description;
+
     const plusCart = () => {
         setQuantity(quantity + 1);
     };
@@ -37,7 +41,7 @@ function ProductPage() {
             setQuantity(1);
         }
     };
-    const handleProductSize = size => {
+    const handleProductSize = (size) => {
         setProductSize(size);
     };
     const dispatch = useDispatch();
@@ -47,7 +51,7 @@ function ProductPage() {
         dispatch(addToCart({ title, images, price, quantity, productSize, id })); // Dispatching the addToCart action
     };
     // check the available pincode
-    const handleCheckPincode = async e => {
+    const handleCheckPincode = async (e) => {
         let key = e.target.value;
         if (key) {
             let response = await fetch(`http://localhost:5000/api/pincode/${key}`);
@@ -103,7 +107,13 @@ function ProductPage() {
                                                     className="fa-solid fa-copy"
                                                 ></i>
                                                 {copied && (
-                                                    <p style={{ color: "green", fontSize: "14px", margin: "0", }}>
+                                                    <p
+                                                        style={{
+                                                            color: "green",
+                                                            fontSize: "14px",
+                                                            margin: "0",
+                                                        }}
+                                                    >
                                                         URL copied to clipboard!
                                                     </p>
                                                 )}
@@ -126,13 +136,12 @@ function ProductPage() {
                                                 </p>
                                             </div>
                                             <div>
-                                                {" "}
                                                 <p className="text-success mb-0">
                                                     you saved ₹
                                                     {Math.trunc(
                                                         (selectedProduct.price / 100) *
                                                         selectedProduct.discountPercentage
-                                                    ) * quantity}{" "}
+                                                    ) * quantity}
                                                 </p>
                                             </div>
                                             <h2>Brand: {selectedProduct.brand}</h2>
@@ -142,19 +151,10 @@ function ProductPage() {
                                     </div>
                                     <div className="d-flex gap-2 justify-content-start">
                                         <div>
-                                            <button
-                                                className={
-                                                    productSize === "sm"
-                                                        ? "productSizeSelected"
-                                                        : "productSize"
-                                                }
-                                                onClick={() => handleProductSize("sm")}
-                                            >
-                                                SM
-                                            </button>
+                                            <Button className={productSize === "sm" ? "productSizeSelected" : "productSize"} title="SM" onClick={() => handleProductSize("sm")} />
                                         </div>
                                         <div>
-                                            <button
+                                            {/* <button
                                                 className={
                                                     productSize === "xl"
                                                         ? "productSizeSelected"
@@ -163,7 +163,8 @@ function ProductPage() {
                                                 onClick={() => handleProductSize("xl")}
                                             >
                                                 XL
-                                            </button>
+                                            </button> */}
+                                            <Button className={productSize === "xl" ? "productSizeSelected" : "productSize"} title="XL" onClick={() => handleProductSize("xl")} />
                                         </div>
                                     </div>
                                     <div className="row text-center py-3">
@@ -181,8 +182,9 @@ function ProductPage() {
                                             </div>
                                         </div>
                                         <div className="col-lg-3 col-5">
-                                            <button
+                                            <Button
                                                 className="button"
+                                                title="Add To Cart"
                                                 onClick={() =>
                                                     addProduct({
                                                         item: selectedProduct,
@@ -193,12 +195,25 @@ function ProductPage() {
                                                         ),
                                                     })
                                                 }
-                                            >
-                                                Add To Cart
-                                            </button>
+                                            />
+                                            {/* <button
+                        className="button"
+                        onClick={() =>
+                          addProduct({
+                            item: selectedProduct,
+                            price: Math.floor(
+                              selectedProduct.price -
+                                (selectedProduct.price / 100) *
+                                  selectedProduct.discountPercentage
+                            ),
+                          })
+                        }
+                      >
+                        Add To Cart
+                      </button> */}
                                         </div>
                                         <div className="col-lg-4 col-2 wishlist-product-page text-center">
-                                            <p>Add To Wishlist</p>
+                                            <p>Add To Wishlist</p> 
                                             <i className="fa-regular fa-heart"></i>
                                         </div>
                                     </div>
@@ -209,9 +224,7 @@ function ProductPage() {
                                             placeholder="Enter pincode & check delivery"
                                         />
                                         {pincode.city && (
-                                            <span
-                                                style={{ fontSize: "14px", fontFamily: "monospace" }}
-                                            >
+                                            <span style={{ fontSize: "14px", fontFamily: "monospace" }} >
                                                 Delivery available in {pincode.city.toLowerCase()},{" "}
                                                 {pincode.district}
                                             </span>

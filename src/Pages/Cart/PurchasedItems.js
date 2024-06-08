@@ -3,6 +3,7 @@ import { removeFromCart } from '../../Store/Slices/ProductSlice';
 import { Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import Button from '../Components/Button/Index'
 
 function PurchasedItems() {
     const basket = useSelector((state) => state.cart);
@@ -29,8 +30,8 @@ function PurchasedItems() {
                                     <p className='border py-1 px-3'>Size: {item.productSize}</p>
                                 </div>
                             </Col>
-                            <Col lg='2' className='text-end remove-btn'>
-                                <button onClick={() => dispatch(removeFromCart(index))}>Remove</button>
+                            <Col lg='2' className='text-end '>
+                                <Button className='remove-btn' onClick={() => dispatch(removeFromCart(index))} title='Remove'/>
                             </Col>
                         </Row>
                     );

@@ -4,6 +4,8 @@ import Logo from '../../Images/logo-main.png'
 import Select from 'react-select'
 import { useSelector } from 'react-redux'
 import { Col, Container, Row } from 'react-bootstrap'
+import MobileNav from './Header/MobileNav'
+import { CartIcon } from '../icons'
 
 function Navbar() {
   const [searchData, setSearchData] = useState([])
@@ -73,8 +75,8 @@ function Navbar() {
             <Col lg='1' md='2' sm='2' xs='5' className='text-end cart-wishlist'>
               <Link to='/cart' className='text-decoration-none'>
                 <div className='d-flex align-items-center justify-content-end'>
-                  <i className="fa-solid fa-cart-shopping" style={item.length > 0 ? { color: '#35677a' } : null}></i>
-                  <p>{item.length > 0 ? `(${item.length})` : null}</p>
+                  <CartIcon color={item.length > 0 && '#35677a'} />
+                  <p>{item.length > 0 && `(${item.length})`}</p>
                 </div>
               </Link>
             </Col>
@@ -91,13 +93,7 @@ function Navbar() {
                   <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div className="offcanvas-body">
-                  <div className="navbar-list-menu">
-                    <Link onClick={scrollToHome} to='/'><p>Home</p></Link>
-                    <Link onClick={scrollToHome} to='/'><p>About</p></Link>
-                    <Link onClick={scrollToHome} to='/products'><p>Products</p></Link>
-                    <Link onClick={scrollToHome} to='/'><p>Gallery</p></Link>
-                    <Link onClick={scrollToHome} to='/'><p>Contact</p></Link>
-                  </div>
+                  <MobileNav />
                 </div >
               </div >
             </Col >

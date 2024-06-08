@@ -6,6 +6,7 @@ import { removeAllItems } from '../../Store/Slices/ProductSlice';
 import Footer from '../Components/Footer'
 import SubTotal from './SubTotal';
 import PurchasedItems from './PurchasedItems';
+import Button from '../Components/Button/Index';
 
 function Cart() {
     const [couponCode, setCouponCode] = useState("")
@@ -34,15 +35,15 @@ function Cart() {
                 {basket.length > 0 ? (
                     <>
                         <Row className=' justify-content-between'>
-                            <Col className="remove-btn">
-                                <h5>Total: Rs {finalPrice ? finalPrice : totalPrice}/-</h5>
-                                <button className='' onClick={() => dispatch(removeAllItems())}>Remove all items</button>
+                            <Col>
+                                <h5>Total: Rs {finalPrice ? finalPrice : totalPrice}/-</h5> 
+                                <Button  className="remove-btn" onClick={() => dispatch(removeAllItems())} title='Remove all items'/>
                             </Col>
                             <Col className="text-end">
                                 <p>{finalPrice > 1 ? "coupon applied 😍" : "Apply coupon code & get 10% more discount."}</p>
                                 <div className='d-flex gap-2 justify-content-end'>
                                     <input type="text" placeholder='apply coupon code' onChange={(e) => setCouponCode(e.target.value)} />
-                                    <button onClick={applyCoupon}>apply coupon</button>
+                                    <Button className='button' onClick={applyCoupon} title='Apply coupon'/>
                                 </div>
                             </Col>
                         </Row>
